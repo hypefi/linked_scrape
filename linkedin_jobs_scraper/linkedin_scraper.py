@@ -344,6 +344,7 @@ class LinkedinScraper:
             else QueryOptions(locations=['Worldwide'], limit=25, optimize=False)
 
         for query in queries:
+            print("query is ", query)
             if not isinstance(query, Query):
                 raise ValueError('A query must be instance of class Query')
             query.merge_options(global_options)

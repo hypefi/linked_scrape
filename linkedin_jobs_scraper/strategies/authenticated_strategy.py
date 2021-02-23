@@ -177,7 +177,7 @@ class AuthenticatedStrategy(Strategy):
 
         if not AuthenticatedStrategy.__is_authenticated_session(driver):
             info(tag, 'Setting authentication cookie')
-
+            print("cookie auth", Config.LI_AT_COOKIE)
             try:
                 driver.add_cookie({
                     'name': 'li_at',

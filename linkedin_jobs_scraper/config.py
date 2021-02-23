@@ -1,11 +1,15 @@
+#!/usr/bin/env python
 import os
 import logging
 
 
 class Config:
     LI_AT_COOKIE = os.environ['LI_AT_COOKIE'] if 'LI_AT_COOKIE' in os.environ else None
+ 
+    #print(os.environ)
+    #print("cookie ", LI_AT_COOKIE)
     LOGGER_NAMESPACE = 'li:scraper'
-
+    
     _level = logging.INFO
 
     if 'LOG_LEVEL' in os.environ:
