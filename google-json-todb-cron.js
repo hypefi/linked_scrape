@@ -10,11 +10,13 @@ var async = require('async'),
 //
 //data 
 //
-let rawdata = fs.readFileSync('/home/hypefi/scrapers/google/part_02/part_02/google-scraper-jobs-remote-MA.json')
+let rawdata = fs.readFileSync('./jobs.json')
 let modata = JSON.parse(rawdata);
-console.log(modata);
-
-
+console.log("modata", modata);
+//console.log(typeof(modata))
+let arr_data = []
+arr_data.push(modata)
+console.log(arr_data)
 //console.log(require('./datajson-mu.js'));
 //var modata = require('./datajson-mu.js');
 
@@ -44,10 +46,10 @@ json._id=idstr;
 json.userId="qRofzWAQpCqJp9kXC";
 json.userName="Anas Boukharta";
 json.status="active";
-
+json.url = "https://www.linkedin.com" + json.url; 
 jsonheure=isodate;
 json.createdAt=jsonheure;
-
+json.contact=json.url;
 json.htmlDescription=json.htmlDescription.replace(/\n/g, "<br />");  
 
 json.htmlDescription=json.htmlDescription;
@@ -55,12 +57,11 @@ json.description=json.description;
 json.updatedAt=jsonheure;
 json.remote=true;
 json.jobtype="Full Time";
-json.location=mylocation;
 
 delete json.salary;
 delete json.isEasyApply;
 delete postDate;
-console.log(json);
+console.log("json", json);
 
   return json;}
 //convert data json to json 
@@ -71,11 +72,11 @@ console.log(json);
 //transform all the array of data scraped with map 
 //
 
-var map1 = modata.map(transformdata);
+var map1 = arr_data.map(transformdata);
 
 console.log(map1);
 //push to server ?
-/*
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -92,7 +93,7 @@ rl.question('push to server database? ', (answer) => {
 
   rl.close();
 });
-*/
+
 const pushtodb = (json)=>{ 
 //push it to server 
 //
